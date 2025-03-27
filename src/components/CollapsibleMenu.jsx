@@ -12,28 +12,25 @@ const menuItems = [
 
 export default function CollapsibleMenu({ isOpen }) {
   return (
-    <>
-      <div className="menu-lateral">
-        <motion.div
-          initial={{ width: "3rem" }}
-          animate={{ width: isOpen ? "12rem" : "3rem" }}
-          className="menu-container"
-        >
-          {menuItems.map((item) => (
-            <div key={item.id} className="menu-item">
-              <div>{item.icon}</div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="item-text"
-              >
-                {isOpen && <span>{item.text}</span>}
-              </motion.div>
-            </div>
-          ))}
-        </motion.div>
-        <div style={{ width: "100%", backgroundColor: "red" }}>Hola Mundo</div>
-      </div>
-    </>
+    <div className="menu-lateral">
+      <motion.div
+        initial={{ width: "3rem" }}
+        animate={{ width: isOpen ? "12rem" : "3rem" }}
+        className="menu-container"
+      >
+        {menuItems.map((item) => (
+          <div key={item.id} className="menu-item">
+            <div>{item.icon}</div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="item-text"
+            >
+              {isOpen && <span>{item.text}</span>}
+            </motion.div>
+          </div>
+        ))}
+      </motion.div>
+    </div>
   );
 }

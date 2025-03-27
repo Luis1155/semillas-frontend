@@ -1,7 +1,8 @@
-.menu-lateral {
+/* .menu-lateral {
   display: flex;
-  height: max-content;
-}
+  flex: 1;
+  background-color: lightcoral;
+} */
 
 .menu-container {
   display: flex;

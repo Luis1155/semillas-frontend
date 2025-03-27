@@ -13,10 +13,10 @@ function App() {
   };
 
   return (
-    <>
+    <div className="container">
       <Header handleIsOpen={handleIsOpen} />
       <CollapsibleMenu isOpen={isOpen} />
-    </>
+    </div>
   );
 }
 export default App;
