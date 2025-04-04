@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  background-color: #222;
+  background-color: #0c497a;
   padding: 10px;
   gap: 10px;
 }
@@ -14,7 +14,7 @@
 }
 
 .menu-button {
-  background-color: #444;
+  background-color: #0c497a;
   border: none;
   padding: 10px;
   border-radius: 5px;
