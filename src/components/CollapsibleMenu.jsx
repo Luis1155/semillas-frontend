@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Home, Settings, User, Menu } from "lucide-react";
 import { motion } from "framer-motion";
 
