@@ -1,5 +1,6 @@
 import { Home, Settings, User, Menu } from "lucide-react";
 import { motion } from "framer-motion";
+import { Outlet } from "react-router";
 
 import "./CollapsibleMenu.css";
 
@@ -30,6 +31,7 @@ export default function CollapsibleMenu({ isOpen }) {
           </div>
         ))}
       </motion.div>
+      <Outlet />
     </div>
   );
 }
