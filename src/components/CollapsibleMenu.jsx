@@ -1,37 +1,64 @@
-import { Home, Settings, User, Menu } from "lucide-react";
+import { useState } from "react";
+import {
+  BookOpen,
+  FileCheck,
+  FileCheck2Icon,
+  Home,
+  MapPin,
+  UserRound,
+} from "lucide-react";
 import { motion } from "framer-motion";
-import { Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
+
+import Header from "./Header";
 
 import "./CollapsibleMenu.css";
 
 const menuItems = [
   { id: 1, icon: <Home />, text: "Inicio" },
-  { id: 2, icon: <User />, text: "Perfil" },
-  { id: 3, icon: <Settings />, text: "Configuración" },
+  { id: 2, icon: <UserRound />, text: "Estudiantes", to: "/estudiantes" },
+  { id: 3, icon: <MapPin />, text: "Lugares", to: "/lugares" },
+  { id: 4, icon: <BookOpen />, text: "Materiales", to: "/materiales" },
+  {
+    id: 5,
+    icon: <FileCheck2Icon />,
+    text: "Calificaciones",
+    to: "/calificaciones",
+  },
 ];
 
-export default function CollapsibleMenu({ isOpen }) {
+export default function CollapsibleMenu() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [pageSelect, setPageSelect] = useState(1);
+
+  const handleIsOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="menu-lateral">
-      <motion.div
-        initial={{ width: "3rem" }}
-        animate={{ width: isOpen ? "12rem" : "3rem" }}
-        className="menu-container"
-      >
-        {menuItems.map((item) => (
-          <div key={item.id} className="menu-item">
-            <div>{item.icon}</div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="item-text"
-            >
-              {isOpen && <span>{item.text}</span>}
-            </motion.div>
-          </div>
-        ))}
-      </motion.div>
-      <Outlet />
+    <div className="container">
+      <Header handleIsOpen={handleIsOpen} isOpen={isOpen} />
+      <div className="menu-lateral">
+        <motion.div
+          initial={{ width: "3rem" }}
+          animate={{ width: isOpen ? "12rem" : "3rem" }}
+          className="menu-container"
+        >
+          {menuItems.map((item) => (
+            <NavLink key={item.id} to={item.to} className={"menu-item"}>
+              <div>{item.icon}</div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="item-text"
+              >
+                {isOpen && <span>{item.text}</span>}
+              </motion.div>
+            </NavLink>
+          ))}
+        </motion.div>
+        <Outlet />
+      </div>
     </div>
   );
 }

@@ -1,27 +1,17 @@
-import { useState } from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 
 import CollapsibleMenu from "./components/CollapsibleMenu";
-import Header from "./components/Header";
+
 import { HomePage } from "./pages/HomePage";
-import { ProfilePage } from "./pages/ProfilePage";
-import { SettingPage } from "./pages/SettingPage";
 
 import "./App.css";
+import { StudentsPage } from "./pages/StudentsPage";
+import { PlacesPage } from "./pages/PlacesPage";
+import { CoursesPage } from "./pages/CoursesPage";
+import { ScoresPage } from "./pages/ScoresPage";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleIsOpen = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const AppLayout = () => (
-    <div className="container">
-      <Header handleIsOpen={handleIsOpen} />
-      <CollapsibleMenu isOpen={isOpen} />
-    </div>
-  );
+  const AppLayout = () => <CollapsibleMenu />;
 
   const router = createBrowserRouter([
     {
@@ -32,12 +22,20 @@ function App() {
           element: <HomePage />,
         },
         {
-          path: "profile",
-          element: <ProfilePage />,
+          path: "estudiantes",
+          element: <StudentsPage />,
         },
         {
-          path: "setting",
-          element: <SettingPage />,
+          path: "lugares",
+          element: <PlacesPage />,
+        },
+        {
+          path: "materiales",
+          element: <CoursesPage />,
+        },
+        {
+          path: "calificaciones",
+          element: <ScoresPage />,
         },
       ],
     },

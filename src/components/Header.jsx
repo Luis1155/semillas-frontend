@@ -1,12 +1,12 @@
-import { Menu } from "lucide-react";
+import { Menu, EllipsisVertical } from "lucide-react";
 
 import "./Header.css";
 
-const Header = ({ handleIsOpen }) => {
+const Header = ({ handleIsOpen, isOpen }) => {
   return (
     <div className="menu-header">
       <button onClick={handleIsOpen} className="menu-button">
-        <Menu />
+        {isOpen ? <EllipsisVertical /> : <Menu />}
       </button>
       <span className="menu-title">Instituto Emmaus</span>
     </div>
