@@ -28,8 +28,10 @@ export default function CollapsibleMenu() {
             <NavLink
               key={item.id}
               to={item.to}
-              className={"menu-item"}
-              onClick={() => setPageSelect(id)}
+              className={
+                item.id == pageSelect ? "menu-item-select" : "menu-item"
+              }
+              onClick={() => setPageSelect(item.id)}
             >
               <div>{item.icon}</div>
               <motion.div

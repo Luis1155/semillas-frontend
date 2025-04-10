@@ -27,6 +27,14 @@
   text-decoration: none;
 }
 
+.menu-item-select {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  color: #3fab49;
+  text-decoration: none;
+}
 .menu-item:hover {
   background-color: #3fab49;
 }
