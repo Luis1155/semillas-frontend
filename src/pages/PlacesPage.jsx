@@ -1,5 +1,5 @@
-import React from "react";
+import "./Page.css";
 
 export const PlacesPage = () => {
-  return <div>PlacesPage</div>;
+  return <div className="base">PlacesPage</div>;
 };

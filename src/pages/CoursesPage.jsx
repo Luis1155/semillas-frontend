@@ -1,5 +1,5 @@
-import React from "react";
+import "./Page.css";
 
 export const CoursesPage = () => {
-  return <div>CoursePage</div>;
+  return <div className="base">CoursePage</div>;
 };

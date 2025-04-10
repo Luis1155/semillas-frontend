@@ -1,31 +1,11 @@
 import { useState } from "react";
-import {
-  BookOpen,
-  FileCheck,
-  FileCheck2Icon,
-  Home,
-  MapPin,
-  UserRound,
-} from "lucide-react";
 import { motion } from "framer-motion";
 import { NavLink, Outlet } from "react-router";
 
 import Header from "./Header";
+import { menuItems } from "../helpers/MenuItems";
 
 import "./CollapsibleMenu.css";
-
-const menuItems = [
-  { id: 1, icon: <Home />, text: "Inicio" },
-  { id: 2, icon: <UserRound />, text: "Estudiantes", to: "/estudiantes" },
-  { id: 3, icon: <MapPin />, text: "Lugares", to: "/lugares" },
-  { id: 4, icon: <BookOpen />, text: "Materiales", to: "/materiales" },
-  {
-    id: 5,
-    icon: <FileCheck2Icon />,
-    text: "Calificaciones",
-    to: "/calificaciones",
-  },
-];
 
 export default function CollapsibleMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +25,12 @@ export default function CollapsibleMenu() {
           className="menu-container"
         >
           {menuItems.map((item) => (
-            <NavLink key={item.id} to={item.to} className={"menu-item"}>
+            <NavLink
+              key={item.id}
+              to={item.to}
+              className={"menu-item"}
+              onClick={() => setPageSelect(id)}
+            >
               <div>{item.icon}</div>
               <motion.div
                 initial={{ opacity: 0 }}
