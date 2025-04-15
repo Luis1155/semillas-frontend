@@ -5,11 +5,10 @@ import "./Page.css";
 export const HomePage = () => {
   return (
     <div className="base home">
-      HomePage
       {menuItems.slice(1).map((item) => (
-        <NavLink key={item.id} to={item.to} className={"menu-item"}>
-          <div>{item.icon}</div>
-          <div className="item-text">
+        <NavLink key={item.id} to={item.to} className={"button"}>
+          <div className="icon">{item.icon}</div>
+          <div>
             <span>{item.text}</span>
           </div>
         </NavLink>

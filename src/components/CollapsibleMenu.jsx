@@ -9,7 +9,6 @@ import "./CollapsibleMenu.css";
 
 export default function CollapsibleMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [pageSelect, setPageSelect] = useState(1);
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
@@ -28,10 +27,9 @@ export default function CollapsibleMenu() {
             <NavLink
               key={item.id}
               to={item.to}
-              className={
-                item.id == pageSelect ? "menu-item-select" : "menu-item"
+              className={({ isActive }) =>
+                isActive ? "menu-item-select" : "menu-item"
               }
-              onClick={() => setPageSelect(item.id)}
             >
               <div>{item.icon}</div>
               <motion.div
