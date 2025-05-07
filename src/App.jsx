@@ -2,9 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 
 import CollapsibleMenu from "./components/CollapsibleMenu";
 
-import { HomePage } from "./pages/HomePage";
-
 import "./App.css";
+import { HomePage } from "./pages/HomePage";
 import { StudentsPage } from "./pages/StudentsPage";
 import { PlacesPage } from "./pages/PlacesPage";
 import { CoursesPage } from "./pages/CoursesPage";
