@@ -3,14 +3,35 @@ import { useState } from "react";
 import { Eye, Pencil, Search } from "lucide-react";
 import "./StudentsPage.css";
 import { data } from "./students";
+import DataTable from "react-data-table-component";
 
 export const StudentsPage = () => {
   const [studentSearch, setStudentSearch] = useState("");
+  const [records, setRecords] = useState(data);
 
   const handleChangeSearch = (event) => {
     const value = event.target.value;
-    setStudentSearch(value);
+    const filteredRecords = data.filter((record) => {
+      return record.Nombres.toLowerCase().includes(value.toLowerCase());
+    });
+    setRecords(filteredRecords);
   };
+
+  const columns = [
+    { name: "Nombres", selector: (row) => row.nombres },
+    { name: "Apellidos", selector: (row) => row.apellidos },
+    { name: "No. Celular", selector: (row) => row.celular },
+    { name: "Ciudad", selector: (row) => row.ciudad },
+    { name: "Dirección", selector: (row) => row.direccion },
+    { name: "Activo", selector: (row) => row.activo },
+    { name: "", selector: (row) => {}, width: "50px", cell: () => <Eye /> },
+    {
+      name: "",
+      selector: (row) => {},
+      width: "50px",
+      cell: () => <Pencil onClick={() => alert("Editar")} />,
+    },
+  ];
 
   return (
     <div className="base-students">
@@ -28,38 +49,7 @@ export const StudentsPage = () => {
       </div>
 
       <div style={{ justifyContent: "center", display: "flex" }}>
-        <table className="table-st">
-          <thead>
-            <tr className="tr-st">
-              <th className="th-st">Nombres</th>
-              <th className="th-st">Apellidos</th>
-              <th className="th-st">No. Celular</th>
-              <th className="th-st">Ciudad</th>
-              <th className="th-st">Dirección</th>
-              <th className="th-st">Activo</th>
-              {/* <th className="th-st"></th>
-            <th className="th-st"></th> */}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((st) => (
-              <tr key={st.Celular} className="tr-st">
-                <td className="td-st">{st.Nombres}</td>
-                <td className="td-st">{st.Apellidos}</td>
-                <td className="td-st">{st.Celular}</td>
-                <td className="td-st">{st.Ciudad}</td>
-                <td className="td-st">{st.Direccion}</td>
-                <td className="td-st">{st.Activo ? "Estoy" : "No estoy"}</td>
-                <td className="td-st">
-                  <Eye />
-                </td>
-                <td className="td-st">
-                  <Pencil />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable columns={columns} data={records} />
       </div>
     </div>
   );
